@@ -16,7 +16,7 @@ author:
     institute: uw
   - name: William Stockhausen
     institute: afscsearefm
-  - name: Susanne Mcdermott
+  - name: Susanne McDermott
     institute: afscsearace
   - name: Chris Long
     institute: afscsearace
@@ -60,7 +60,7 @@ source(here::here('R', "render_toc.R"))
 # Abstract 
 
 During Alaska Fisheries Science Center bottom trawl surveys length frequency sub-samples are collected to provide sex-specific length composition data for groundfish stock assessments. 
-Determining sex for each individual in the length frequency sub-samples (e.g., upwards of 200 per tow per species) has resulted in acute and repetitive stress injuries of survey staff, and these injuries have become increasingly common. 
+The overall workload on board of survey vessels, which included determining sex for each individual in the length frequency sub-samples (e.g., upwards of 200 per tow per species), has likely led to unacceptable numbers of acute and repetitive stress injuries of survey staff. 
 In December 2021, a working group was formed to evaluate the effect of reducing length frequency sub-sample sizes for which sex is determined on length composition uncertainty. 
 Over the spring of 2022, the working group developed a bootstrap-simulation approach that determines changes in uncertainty for reduced sub-sample sizes. 
 For the majority of species limiting sub-samples to 100 fish per haul reduces length composition input sample sizes by $\leq$ 25% from status quo length composition input sample sizes.
@@ -85,10 +85,10 @@ Observations of sex-specific length distributions for designated species encount
 (4) sorting the sub-sample by sex (each fish is cut with a scalpel, gonads identified and placed in a sex-specific receptacle), and 
 (5) measuring and recording each fish length (each fish is placed on a measuring board, length is identified and the species, sex and measurement are recorded on a computer).  
 This length measurement process is repeated over 100,000 times in a given region's survey each year, representing a daunting amount of work for 6 field scientists per research vessel. 
-Each year, this work flow results in acute and repetitive stress injuries, some requiring medical interventions and claims to the U.S. Office of Workers' Compensation Programs. 
+Each year, this work flow contributes to acute and repetitive stress injuries, some requiring medical interventions and claims to the U.S. Office of Workers' Compensation Programs. 
 Another consequence of the intensity of this work are unrecoverable errors in the observed data; as fatigue or injuries accumulate during the course of field work, so do data collection errors (e.g. failure to properly encode length measurements with the correct species or sex), despite extensive *in situ* quality assurance protocols.
 
-In December of 2021, an AFSC working group was formed (the ‘Survey Workload Optimization’ working group, SWO) to evaluate the potential impacts of reductions to sex-sampling within the length frequency data collection process on survey data products due to repetitive motion injuries that have been occurring on the bottom trawl surveys. 
+In December of 2021, an AFSC working group was formed (the ‘Survey Workload Optimization’ working group, SWO) to evaluate the potential impacts of reductions to sex-sampling within the length frequency data collection process on survey data products. 
 From the stock assessment perspective, the primary concern when reducing the sex-sampling within the length frequency data collections was the impact on the uncertainty in subsequent sex-specific length composition data. 
 This is of particular importance to stock assessments that are sex-specific, such as the flatfish assessments conducted by AFSC. 
 To that end, we evaluated the impact of reducing sex-sampling within the length frequency data collection to address two objectives: (1) the impact of reducing sampling for sex on the uncertainty in the sex-specific length composition, and, (2) identifying an acceptable level of increase in uncertainty in sex-specific length composition data due to sub-sampling for sex.
@@ -108,14 +108,14 @@ However, analysis of length frequency sample size found that 10 random length sp
 This change in methodology has been applied to some species sampled in the EBS survey, although with varying consistency. 
 
 The Resource Assessment and Conservation Engineering (RACE) Division of AFSC hosts data collected from bottom trawl surveys on an internal SQL-based server ("RACEBASE").
-For the analysis we conducted, RACEBASE was queried using the R package sumfish (https://github.com/afsc-gap-products/sumfish). 
+For the analysis, RACEBASE was queried using the R package sumfish (https://github.com/afsc-gap-products/sumfish). 
 Raw length sample data were summarized to determine the average number of sex-specific and total length frequency samples over the most recent three years by survey and species (EBS: 2017-2019; AI: 2014, 2016, 2018; GOA: 2017, 2019, 2021). 
 Additionally we summarized the number of sex-specific lengths and total number of lengths collected per haul over time. 
 The most frequently sampled species within each survey were then selected to be included in this analysis; these included primarily stocks that are assessed at AFSC with age structured assessment models, but also include stocks assessed solely with trawl survey biomass estimates. 
 
 ## Expanding length frequency to population abundance at length
 
-Length frequency samples collected by the AFSC bottom trawl surveys are expanded by catch-per-unit-effort (CPUE) and stratum area to obtain estimates of population abundance at length (i.e., design-based expansion). 
+Length frequency samples collected by the AFSC bottom trawl surveys are expanded by area-swept type catch-per-unit-effort (CPUE) and stratum area to obtain estimates of population abundance at length (i.e., design-based expansion). 
 In a design-based expansion process, this is often referred to as the ‘first stage expansion’ and is a common method to obtain population estimates at length from area-swept survey data [@Ailloud2019; @Miller2006]. 
 Population abundance at length are computed for three sex categories (males, females, and unsexed) at the stratum level, which are then summed across strata to obtain the population abundance at length for the management-scale region (i.e., EBS, AI, or GOA).
 These can also be summed to any sub-region level.
@@ -127,7 +127,7 @@ In the first step of this process we compute the overall population numbers in y
   (\#eq:eqn1)
 \end{equation}
 
-where $A_{st}$ is the area of stratum-*st* (in km^2^), and $\overline{CPUE}_{st,y}$ is the average catch per unit effort of numbers captured across the hauls within a strata, given by:
+where $A_{st}$ is the area of stratum-*st* (in km^2^), and $\overline{CPUE}_{st,y}$ is the average catch per unit effort (in numbers per km^2^) of fish captured across the hauls within a strata, given by:
 
 \begin{equation}
  \overline{CPUE}_{st,y}
@@ -137,7 +137,7 @@ where $A_{st}$ is the area of stratum-*st* (in km^2^), and $\overline{CPUE}_{st,
 \end{equation}
 
 where $H_{st,y}$ is the number of hauls, $CPUE_{h,st,y}$ is the catch (in numbers) per unit effort for haul-*h*, $n_{h,st,y}$ is the catch (in numbers) in haul-*h*, and $E_{h,st,y}$ is the effort in haul-*h*.
-$E_{h,st,y}$ is computed as the net width multiplied by the length of the tow (which is the time on bottom multiplied by the average speed), or, the area swept by the haul (in km^2^). 
+$E_{h,st,y}$ is computed as the net width multiplied by the distance fished of the tow, or, the area swept by the haul (in km^2^). 
 Next, the ratio of catch per unit effort among hauls per stratum ($\hat{p}_{CPUE,h,st,y}$) is computed by:
 
 \begin{equation}
@@ -175,7 +175,7 @@ and to obtain the sex-specific estimates of population abundance at length in a 
 To evaluate the effect of sub-sampling length frequency collections on uncertainty in calculated length compositions, we developed a bootstrap-simulation framework that (1) allows for reductions in the number of sexed length frequencies collected historically, and (2) conducts the first-stage expansion process for each bootstrap replicate of length frequency information to generate length compositions.
 In simple terms, the simulation framework that we developed selects a pre-determined number of fish from the length frequency collections that are then sexed, the remaining length frequency data (regardless of whether sex was actually determined in the historical data) are classified as ‘unsexed’. 
 
-The bootstrap-simulation framework is composed of a suite of nested resampling process. 
+The bootstrap-simulation framework is composed of a suite of nested resampling processes. 
 Bootstrap resampling was performed either with replacement (wr) or without replacement (wor) depending on the needs of a particular protocol. 
 Functions to conduct the sampling protocols were developed in a compartmentalized manner to provide for substantial flexibility in exploring desired resampling scenarios. 
 The order of operations (Figure \@ref(fig:length)) has the following steps, with steps 1-3 being optional switches:
@@ -299,7 +299,7 @@ Two of the primary results from this analysis were: (1) with an increasing level
 Across the majority of stocks the resulting ISS for sex-specific length composition was reduced by less than 25% after decreasing the number of length frequency collections that are subsequently sexed to 100 - 175 fish when compared to the ISS that resulted from the full historical datasets without any sex sub-sampling. 
 There were notable exceptions, however, primarily for walleye pollock in the eastern Bering Sea, for which the ISS for the sex sub-sampling cases was greatly reduced when compared to the base case. 
 This reduction in the ISS can be explained by the large reduction in sexed sample sizes compared to the base case (nearly 15,000 less sexed samples on average for the sex sub-sample size case of 100). 
-The amount of sampling for walleye pollock in the eastern Bering Sea survey is much larger than for any of the other species in any of the surveys, and this result points to a possible tipping point in the reduction of ISS as it relates to the magnitude of sex-specific length composition sample size in any given haul during a survey. 
+The amount of sampling for walleye pollock in the eastern Bering Sea survey is much larger than for any of the other species in any of the surveys, and this result points to a possible threshold in the reduction of ISS as it relates to the magnitude of sex-specific length composition sample size in any given haul during a survey. 
 Although, while the ISS for sex-specific length composition resulted in a larger decrease compared to other species, the eastern Bering Sea walleye pollock stock assessment is a single-sex assessment and uses the total length composition [@Ianelli2021]. 
 Therefore, the ISS for the assessment model would remained unchanged regardless of the sub-sampling level for sex determination of the length frequency collections. 
 This same single-sex modeling approach is used for the eastern Bering Sea Pacific cod stock assessment [@Thompson2021], so while the sex-specific ISS was reduced by a large amount compared to the base case in some years (e.g., 2019), the ISS for the total length composition was similar to the base case. 
@@ -337,19 +337,19 @@ We thank *reviewer1* and *reviewer2* for their helpful reviews of this manuscrip
 # Tables 
 ```{r ai-avg-samples}
 # Copying Pete here - - putting this in here to be formatted later - tried some a bit :/
-knitr::kable(vroom::vroom(here::here('tables', 'ai_samples.csv')), caption = "Total length frequency samples from the most recent three Aleutian Islands surveys for the species evaluated in the bootstrap-simulation for reduction in sexed length-frequency collections.", align = c('lcccc'), format.args = list(big.mark = ",", scientific = FALSE))
+knitr::kable(vroom::vroom(here::here('tables', 'ai_samples.csv')), caption = "Total length frequency samples from the most recent three Aleutian Islands surveys for the species evaluated in the bootstrap-simulation for reduction in sexed length-frequency collections.", align = c('llcccc'), format.args = list(big.mark = ",", scientific = FALSE))
 ```
 \newpage
 
 ```{r ebs-avg-samples}
 # Copying Pete here - - putting this in here to be formatted later - tried some a bit :/
-knitr::kable(vroom::vroom(here::here('tables', 'ebs_samples.csv')), caption = "Total length frequency samples from the most recent three eastern Bering Sea surveys for the species evaluated in the bootstrap-simulation for reduction in sexed length-frequency collections.", align = c('lcccc'), format.args = list(big.mark = ",", scientific = FALSE))
+knitr::kable(vroom::vroom(here::here('tables', 'ebs_samples.csv')), caption = "Total length frequency samples from the most recent three eastern Bering Sea surveys for the species evaluated in the bootstrap-simulation for reduction in sexed length-frequency collections.", align = c('llcccc'), format.args = list(big.mark = ",", scientific = FALSE))
 ```
 \newpage
 
 ```{r goa-avg-samples}
 # Copying Pete here - - putting this in here to be formatted later - tried some a bit :/
-knitr::kable(vroom::vroom(here::here('tables', 'goa_samples.csv')), caption = "Total length frequency samples from the most recent three Gulf of Alaska surveys for the species evaluated in the bootstrap-simulation for reduction in sexed length-frequency collections.", align = c('lcccc'), format.args = list(big.mark = ",", scientific = FALSE))
+knitr::kable(vroom::vroom(here::here('tables', 'goa_samples.csv')), caption = "Total length frequency samples from the most recent three Gulf of Alaska surveys for the species evaluated in the bootstrap-simulation for reduction in sexed length-frequency collections.", align = c('llcccc'), format.args = list(big.mark = ",", scientific = FALSE))
 ```
 \newpage
 
