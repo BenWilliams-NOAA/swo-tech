@@ -1,5 +1,5 @@
 ---
-title: "Sub-sampling catches to determine sex-specific length frequency in Alaska Fishery Science Center bottom trawl surveys"
+title: "Sub-sampling catches to determine sex-specific length frequency in Alaska Fisheries Science Center bottom trawl surveys"
 
 author:
   - name: Peter-John F. Hulson
@@ -8,17 +8,17 @@ author:
     correspondence: true
   - name: Benjamin C. Williams
     institute: afscjnu    
-  - name: Meaghan Bryan
+  - name: Meaghan D. Bryan
     institute: afscsearefm
   - name: Jason Conner
     institute: afscsearace
   - name: Matthew R. Siskey
     institute: uw
-  - name: William Stockhausen
+  - name: William T. Stockhausen
     institute: afscsearefm
-  - name: Susanne McDermott
+  - name: Susanne F. McDermott
     institute: afscsearace
-  - name: Chris Long
+  - name: W. Christopher Long
     institute: afscsearace
 
 institute:
@@ -63,12 +63,12 @@ source(here::here('R', "render_toc.R"))
 
 # Abstract
 
-During Alaska Fisheries Science Center bottom trawl surveys length frequency sub-samples are collected to provide sex-specific length composition data for groundfish stock assessments.
-The overall workload on board of survey vessels, which included determining sex for each individual in the length frequency sub-samples (e.g., upwards of 200 per tow per species), has likely led to unacceptable numbers of acute and repetitive stress injuries of survey staff.
+Length frequency sub-samples are collected to provide sex-specific length composition data for groundfish stock assessments during the Alaska Fisheries Science Center bottom trawl surveys.
+The overall workload on board of survey vessels, which included determining sex for each individual in the length frequency sub-samples (e.g., upwards of 200 per haul per species), has likely led to unacceptable numbers of acute and repetitive stress injuries of survey staff.
 In December 2021, a working group was formed to evaluate the effect of reducing length frequency sub-sample sizes for which sex is determined on length composition uncertainty.
 Over the spring of 2022, the working group developed a bootstrap-simulation approach that determines changes in uncertainty for reduced sub-sample sizes.
 For the majority of species limiting sub-samples to 100 fish per haul reduces length composition input sample sizes by $\leq$ 25% from status quo length composition input sample sizes.
-Therefore, upon meeting with stock assessment authors the joint recommendation between the working group and assessment authors to the survey staff was to limit length frequency sub-sampling for which sex is subsequently determined to 100 subsampled fish per haul.
+Therefore, upon meeting with stock assessment authors the joint recommendation between the working group and assessment authors to the survey staff was to limit length frequency sub-sampling for sex determination to 100 subsampled fish per haul.
 
 \newpage
 
@@ -82,26 +82,26 @@ render_toc("swo_length_tech_memo.Rmd")
 
 The National Oceanic and Atmospheric Administration's (NOAA's) Alaska Fisheries Science Center (AFSC) has conducted effort-standardized bottom trawl surveys in the eastern Bering Sea (EBS), Gulf of Alaska (GOA) and Aleutian Islands (AI) since 1982 [@Stauffer2004].
 These resource surveys comprehensively catalog the biota encountered at each sampling station.
-Observations of sex-specific length distributions for designated species encountered within a catch sample are collected by: (1) sorting the trawl sample by species, (2) weighing each species in aggregate, (3) obtaining a random sub-sample of target sample size, (4) sorting the sub-sample by sex (each fish is cut with a scalpel, gonads identified and placed in a sex-specific receptacle), and (5) measuring and recording each fish length (each fish is placed on a measuring board, length is identified and the species, sex and measurement are recorded on a computer).\
+Observations of sex-specific length distributions for designated species encountered within a catch sample are collected by 1) sorting the trawl sample by species, 2) weighing each species in aggregate, 3) obtaining a random sub-sample of target sample size, 4) sorting the sub-sample by sex (each fish is cut with a scalpel, gonads are identified and placed in a sex-specific receptacle), and 5) measuring and recording each fish length (each fish is placed on a measuring board, length is identified and the species, sex and measurement are recorded on a computer).
 
-This length measurement process is repeated over 100,000 times in a given region's survey each year, representing a daunting amount of work for 6 field scientists per research vessel.
+This length measurement process is repeated over 100,000 times in a given region's survey each year, representing a daunting amount of work for six field scientists per research vessel.
 Each year, this work flow contributes to acute and repetitive stress injuries, some requiring medical interventions and claims to the U.S.
 Office of Workers' Compensation Programs.
-Another consequence of the intensity of this work are unrecoverable errors in the observed data; as fatigue or injuries accumulate during the course of field work, so do data collection errors (e.g. failure to properly encode length measurements with the correct species or sex), despite extensive *in situ* quality assurance protocols.
+Another consequence of the intensity of this work is unrecoverable errors in the observed data; as fatigue or injuries accumulate during the course of field work, so do data collection errors (e.g. failure to properly encode length measurements with the correct species or sex), despite extensive *in situ* quality assurance protocols.
 
-In December of 2021, an AFSC working group was formed (the 'Survey Workload Optimization' working group, SWO) to evaluate the potential impacts of reductions to sex-sampling within the length frequency data collection process on survey data products.
+In December of 2021, an AFSC working group was formed (the 'Survey Workload Optimization' Working Group, SWO) to evaluate the potential impacts of reductions to sex-sampling within the length frequency data collection process on survey data products.
 From the stock assessment perspective, the primary concern when reducing the sex-sampling within the length frequency data collections was the impact on the uncertainty in subsequent sex-specific length composition data.
 This is of particular importance to stock assessments that are sex-specific, such as the flatfish assessments conducted by AFSC.
-To that end, we evaluated the impact of reducing sex-sampling within the length frequency data collection to address two objectives: (1) the impact of reducing sampling for sex on the uncertainty in the sex-specific length composition, and, (2) identifying an acceptable level of increase in uncertainty in sex-specific length composition data due to sub-sampling for sex.
+To that end, we evaluated the impact of reducing sex-sampling within the length frequency data collection to address two objectives: 1) the impact of reducing sampling for sex on the uncertainty in the sex-specific length composition, and, 2) identifying an acceptable level of increase in uncertainty in sex-specific length composition data due to sub-sampling for sex.
 
 # Materials and Methods
 
-## Survey data
+## Survey Data
 
-Data collection for each AFSC groundfish survey is described in respective NOAA Technical Memorandum [EBS: @Lauth2019; AI: @vonSzalay2017; GOA: @vonSzalay2018].
+Data collection for each AFSC groundfish survey is described in respective NOAA Technical Memorandums [EBS: @Lauth2019; AI: @vonSzalay2017; GOA: @vonSzalay2018].
 Fundamental methods of length sample collection are generally synchronized between these surveys, with species-specific exceptions for minimum length sub-sample size.
-Survey protocols include sampling bimodal length distributions separately (e.g. many juveniles and fewer adults within one species), which are then extrapolated to the total estimated number of individuals in each length mode category for that trawl sample and aggregated.
-Some species' gonads are difficult to successfully distinguish in the field, so a length threshold is determined (e.g. approximately 10-15 cm for walleye pollock) below which sex is coded as "unsexed".
+Survey protocols include sampling bimodal length distributions separately (e.g., many juveniles and fewer adults within one species), which are then extrapolated to the total estimated number of individuals in each length mode category for that haul sample and aggregated.
+Some species' gonads are difficult to distinguish in the field when they are small, so a length threshold is determined (e.g., approximately 10-15 cm for walleye pollock) below which sex is coded as "unsexed".
 
 Survey length sub-sampling protocols have been altered at least once during the time series.
 Historically, AFSC trawl survey standard operating procedures directed scientists to collect a minimum of 200 length specimens per species where more than 200 were in a trawl sample.
@@ -112,16 +112,16 @@ The Resource Assessment and Conservation Engineering (RACE) Division of AFSC hos
 For the analysis, RACEBASE was queried using the R package sumfish (<https://github.com/afsc-gap-products/sumfish>).
 Raw length sample data were summarized to determine the average number of sex-specific and total length frequency samples over the most recent three years by survey and species (EBS: 2017-2019; AI: 2014, 2016, 2018; GOA: 2017, 2019, 2021).
 Additionally we summarized the number of sex-specific lengths and total number of lengths collected per haul over time.
-The most frequently sampled species within each survey were then selected to be included in this analysis; these included primarily stocks that are assessed at AFSC with age structured assessment models, but also include stocks assessed solely with trawl survey biomass estimates.
+The most frequently sampled species within each survey were then selected to be included in this analysis; these included primarily stocks that are assessed at AFSC with age-structured assessment models, but it also include stocks assessed solely with trawl survey biomass estimates.
 
-## Expanding length frequency to population abundance at length
+## Expanding Length Frequency to Population Abundance at Length
 
-Length frequency samples collected by the AFSC bottom trawl surveys are expanded by area-swept type catch-per-unit-effort (CPUE) and stratum area to obtain estimates of population abundance at length (i.e., design-based expansion).
+Length frequency samples collected by the AFSC bottom trawl surveys are expanded by area-swept type catch-per-unit-effort (CPUE) and stratum area to obtain estimates of population abundance-at-length (i.e., design-based expansion).
 In a design-based expansion process, this is often referred to as the 'first stage expansion' and is a common method to obtain population estimates at length from area-swept survey data [@Ailloud2019; @Miller2006].
-Population abundance at length are computed for three sex categories (males, females, and unsexed) at the stratum level, which are then summed across strata to obtain the population abundance at length for the management-scale region (i.e., EBS, AI, or GOA).
+Population abundance-at-length are computed for three sex categories (males, females, and unsexed) at the stratum level, which are then summed across strata to obtain the population abundance-at-length for the management-scale region (i.e., EBS, AI, or GOA).
 These can also be summed to any sub-region level.
 
-In the first step of this process we compute the overall population numbers in year-*y* for stratum-*st* ($\hat{N}_{st,y}$) with:
+In the first step of this process, we compute the overall population numbers in year-*y* for stratum-*st* ($\hat{N}_{st,y}$) with
 
 ```{=tex}
 \begin{equation}
@@ -129,7 +129,7 @@ In the first step of this process we compute the overall population numbers in y
   (\#eq:eqn1)
 \end{equation}
 ```
-where $A_{st}$ is the area of stratum-*st* (in km^2^), and $\overline{CPUE}_{st,y}$ is the average catch per unit effort (in numbers per km^2^) of fish captured across the hauls within a strata, given by:
+where $A_{st}$ is the area of stratum-*st* (in km^2^), and $\overline{CPUE}_{st,y}$ is the average catch per unit effort (in numbers per km^2^) of fish captured across the hauls within a strata, given by
 
 ```{=tex}
 \begin{equation}
@@ -140,8 +140,8 @@ where $A_{st}$ is the area of stratum-*st* (in km^2^), and $\overline{CPUE}_{st,
 \end{equation}
 ```
 where $H_{st,y}$ is the number of hauls, $CPUE_{h,st,y}$ is the catch (in numbers) per unit effort for haul-*h*, $n_{h,st,y}$ is the catch (in numbers) in haul-*h*, and $E_{h,st,y}$ is the effort in haul-*h*.
-$E_{h,st,y}$ is computed as the net width multiplied by the distance fished of the tow, or, the area swept by the haul (in km^2^).
-Next, the ratio of catch per unit effort among hauls per stratum ($\hat{p}_{CPUE,h,st,y}$) is computed by:
+$E_{h,st,y}$ is computed as the net width multiplied by the distance fished of the haul, or, the area swept by the haul (in km^2^).
+Next, the ratio of catch-per-unit effort among hauls per stratum ($\hat{p}_{CPUE,h,st,y}$) is computed by
 
 ```{=tex}
 \begin{equation}
@@ -150,7 +150,7 @@ Next, the ratio of catch per unit effort among hauls per stratum ($\hat{p}_{CPUE
 \end{equation}
 ```
 where $CPUE_{h,st,y}$ is the catch (in numbers) per unit effort within a haul-*h*.
-We then compute the sex-specific ratio of the total number of lengths sampled within a haul by length ($\hat{p}_{sx,l,h,st,y}$) with:
+We then compute the sex-specific ratio of the total number of lengths sampled within a haul by length ($\hat{p}_{sx,l,h,st,y}$) with
 
 ```{=tex}
 \begin{equation}
@@ -163,29 +163,29 @@ We then compute the sex-specific ratio of the total number of lengths sampled wi
 \end{equation}
 ```
 where $N_{sx,l,h,st,y}$ is the count of sampled fish, in numbers, by sex-*sx* and length-*l*.
-In some cases there are hauls that have catch for a species but without corresponding length frequency data, which is addressed differently between the EBS survey and the GOA and AI surveys.
+In some cases there are hauls that have catch for a species but without corresponding length frequency data, which is addressed differently in the EBS survey than in the GOA and AI surveys.
 If no length frequency samples are missing from the data, case (1) is applied.
 Missing length frequency data in the EBS is handled by assigning the estimated proportion of the stratum population to a substitute length code, so that the abundance is not extrapolated to observed length categories.
 For missing length frequency data in the GOA and AI surveys, case (2) of equation \@ref(eq:eqn4) is applied in order to account for the unknown length frequency in these hauls.
-Finally, we estimate the sex-specific population abundance at length within strata-*st* with:
+Finally, we estimate the sex-specific population abundance at length within strata-*st* with
 
 ```{=tex}
 \begin{equation}
- \hat{N}_{sx,l,st,y}=\hat{N}_{st,y}\cdot\hat{p}_{CPUE,h,st,y}\cdot\hat{p}_{sx,l,h,st,y}
+ \hat{N}_{sx,l,st,y}=\sum_{h=1}^{H_{st,y}}[\hat{N}_{st,y}\cdot\hat{p}_{CPUE,h,st,y}\cdot\hat{p}_{sx,l,h,st,y}]
   (\#eq:eqn5)
 \end{equation}
 ```
 and to obtain the sex-specific estimates of population abundance at length in a management area one would simply sum $\hat{N}_{sx,l,st,y}$ across strata.
 
-## Bootstrap-simulation framework
+## Bootstrap-simulation Framework
 
-To evaluate the effect of sub-sampling length frequency collections on uncertainty in calculated length compositions, we developed a bootstrap-simulation framework that (1) allows for reductions in the number of sexed length frequencies collected historically, and (2) conducts the first-stage expansion process for each bootstrap replicate of length frequency information to generate length compositions.
+To evaluate the effect of sub-sampling length frequency collections on uncertainty in calculated length compositions, we developed a bootstrap-simulation framework that 1) allows for reductions in the number of sexed length frequencies collected historically, and 2) conducts the first-stage expansion process for each bootstrap replicate of length frequency information to generate length compositions.
 In simple terms, the simulation framework that we developed selects a pre-determined number of fish from the length frequency collections that are then sexed, the remaining length frequency data (regardless of whether sex was actually determined in the historical data) are classified as 'unsexed'.
 
 The bootstrap-simulation framework is composed of a suite of nested resampling processes.
 Bootstrap resampling was performed either with replacement (wr) or without replacement (wor) depending on the needs of a particular protocol.
 Functions to conduct the sampling protocols were developed in a compartmentalized manner to provide for substantial flexibility in exploring desired resampling scenarios.
-The order of operations (Figure \@ref(fig:length)) has the following steps, with steps 1-3 being optional switches:
+The order of operations (Fig. \@ref(fig:length)) has the following steps, with steps 1-3 being optional switches:
 
 1.  Resample hauls (wr) from the set of hauls with associated catch-per-unit-effort (in numbers)
 2.  Within the resampled hauls from step 1, resample the observed lengths (wr)
@@ -194,7 +194,7 @@ The order of operations (Figure \@ref(fig:length)) has the following steps, with
 
 The core of the bootstrap-simulation function (step 3 above) is designed to explore reductions in the sample size of lengths that are then sexed on a per haul basis.
 In this bootstrap-simulation, the number of lengths in a given haul must be less than or equal to the desired sample size *x* determined in step 2.
-In step 3, when the number of resampled lengths from step 2 in a haul $n_l$ is less than *x* then $n_l$ is used directly, if $n_l>x$ then a random draw of lengths is taken without replacement in step 3, such that:
+In step 3, when the number of resampled lengths from step 2 in a haul $n_l$ is less than *x* then $n_l$ is used directly, if $n_l>x$ then a random draw of lengths is taken without replacement in step 3, such that
 
 <!-- 1. reduce total number of length samples - wor  -->
 
@@ -224,7 +224,7 @@ In step 3, when the number of resampled lengths from step 2 in a haul $n_l$ is l
   (\#eq:eqn6)
 \end{equation}
 ```
-In the case where $n_l>x$ the random draw of lengths are taken without replacement because the lengths within the haul have already been resampled in step 2, and the remainder of the lengths that were not sampled are then moved into the 'unsexed' category.
+In the case where $n_l>x$, the random draw of lengths are taken without replacement because the lengths within the haul have already been resampled in step 2, and the remainder of the lengths that were not sampled are then moved into the 'unsexed' category.
 The bootstrap-simulation then repeats steps 1-3 iteratively for each sex sub-sample size determined in step 1, providing iterated sex-specific population abundance at length that was influenced by sex-subsampling.
 
 We applied the bootstrap-simulation to species that were most commonly captured in the EBS, AI, and GOA bottom trawl surveys (Tables \@ref(tab:ai-avg-samples) - \@ref(tab:goa-avg-samples)).
@@ -234,7 +234,7 @@ We ran the bootstrap-simulation for 500 iterations, a level at which the variabi
 We applied the bootstrap-simulation to the most recent 3 years of the respective bottom trawl surveys, which were the most indicative of the current sampling levels.
 The bootstrap-simulation was developed in R [@Rcore] and is available via GitHub as an R package (<https://github.com/BenWilliams-NOAA/swo>).
 
-## Computing effective and input sample size
+## Computing Effective and Input Sample Size
 
 We used two performance metrics to quantify potential changes in uncertainty of length compositions (i.e., population abundance-at-length) owing to reduced sampling of sex-specific length frequency information.
 First, effective sample size was used to compare each bootstrap replicate of length composition to the original length composition calculated from the complete historical dataset.
@@ -243,7 +243,7 @@ Second, input sample size was used to summarize uncertainty across bootstrap rep
 Effective sample size (ESS), as introduced by @Mcallister1997, is a statistic that can evaluate the level of intra-haul correlation in composition samples that are collected on a survey (whether from age or length frequency collections).
 It is also a statistic that can evaluate the amount of uncertainty in an estimated composition compared to an observed composition.
 Effective sample size is usually calculated from stock assessment output, comparing the composition predicted by the model to the observed composition fed to the model.
-Effective sample size is given by:
+Effective sample size is given by
 
 ```{=tex}
 \begin{equation}
@@ -256,12 +256,12 @@ Therefore, higher ESS indicates less uncertainty in the size composition estimat
 
 In this bootstrap-simulation, we used effective sample size to calculate uncertainty in length compositions for each simulation replicate.
 Length composition derived from the historical bottom trawl surveys was treated as the observed proportions $O_c$ in equation \@ref(eq:eqn7).
-For each iteration of the simulation for a determined sex sub-sample size we computed a sex-specific estimated proportion ($E_c$) that was then compared to the historical sex-specific length composition (the effective sample size for the total length composition, as the sum of population abundance at length across sex categories, was also computed).
-Thus, for each iteration of the simulation we computed an effective sample size that quantifies the amount of uncertainty that resulted from each iteration of sub-sampling sexed length frequency data.
+For each iteration of the simulation for a determined sex sub-sample size, we computed a sex-specific estimated proportion ($E_c$) that was then compared to the historical sex-specific length composition (the effective sample size for the total length composition, as the sum of population abundance at length across sex categories, was also computed).
+Thus, for each iteration of the simulation, we computed an effective sample size that quantifies the amount of uncertainty that resulted from each iteration of sub-sampling sexed length frequency data.
 
 Input sample size (ISS) is defined as a metric of uncertainty used in data-weighting procedures for stock assessment models.
 An input sample size is usually assigned to annual length compositions in the model fitting process, but there are a variety of methods for calculation -- many of which are closely related to the information content of the data product in question.
-To summarize uncertainty across bootstrap replicates of ESS, we calculated ISS as the harmonic mean:
+To summarize uncertainty across bootstrap replicates of ESS, we calculated ISS as the harmonic mean of effective sample size across bootstrap iterations
 
 ```{=tex}
 \begin{equation}
@@ -281,31 +281,31 @@ The top five species for the eastern Bering Sea shelf bottom trawl survey were w
 The species with the greatest number of lengths was similar among years as well.
 The species most frequently sampled for lengths across all the surveys was walleye pollock in the eastern Bering Sea survey (Table \@ref(tab:ebs-avg-samples)), with nearly 50% more samples in some years as the next most frequently sampled species (arrowtooth flounder in the Gulf of Alaska, Table \@ref(tab:goa-avg-samples)).
 
-The number of sexed sampled lengths per haul for species of interest are summarized in (Figures \@ref(fig:ai-samples-per-haul) - \@ref(fig:goa-samples-per-haul)) for the most recent three years of data.
+The number of sexed sampled lengths per haul for species of interest are summarized in (Figs. \@ref(fig:ai-samples-per-haul) - \@ref(fig:goa-samples-per-haul)) for the most recent three years of data.
 The species with the greatest number of hauls exceeding the sampling minimum of 200 samples are walleye pollock, yellowfin sole, and northern rock sole in the eastern Bering Sea; Pacific ocean perch, northern rockfish, and walleye pollock in the Aleutian Islands; and Pacific ocean perch, arrowtooth flounder, and walleye pollock in the Gulf of Alaska.
-The largest frequency of hauls that exceeded the sampling target of 200 length samples compared to all other species in each survey was for eastern Bering Sea walleye pollock (Figure \@ref(fig:ebs-samples-per-haul)).
+The largest frequency of hauls that exceeded the sampling target of 200 length samples compared to all other species in each survey was for eastern Bering Sea walleye pollock (Fig. \@ref(fig:ebs-samples-per-haul)).
 
-In general, the mean of the regional, replicated sex-specific ESS for length compositions increased as the number of collected lengths for which sex was determined increased (Figures \@ref(fig:ai-length) - \@ref(fig:goa-length)).
+In general, the mean of the regional, replicated sex-specific ESS for length compositions increased as the number of collected lengths for which sex was determined increased (Figs. \@ref(fig:ai-length) - \@ref(fig:goa-length)).
 For a number of species, the sub-sampling case of 175 sexed lengths was nearly equivalent to the base case (in which no sub-sampling occurred), indicating that for these species around 175 or less lengths have been subsequently sexed historically.
 There were notable exceptions to the sub-sampling case of 175 being similar to the base case, indicating that in the historical surveys there were a number of hauls in which more than 175 sex-specific lengths were measured.
-These exceptions include arrowtooth flounder in the eastern Bering Sea (Figure \@ref(fig:ebs-length)) and Gulf of Alaska (Figure \@ref(fig:goa-length)), and walleye pollock in the eastern Bering Sea (Figure \@ref(fig:ebs-length)).
+These exceptions include arrowtooth flounder in the eastern Bering Sea (Fig. \@ref(fig:ebs-length)) and Gulf of Alaska (Fig. \@ref(fig:goa-length)), and walleye pollock in the eastern Bering Sea (Fig. \@ref(fig:ebs-length)).
 For all the species and regions investigated the mean of the replicated ESS for the total length composition (the sum of the female, male, and unsexed population at length estimates) were insensitive to the sexed sub-sampling cases.
 
-Results of the sex-specific ISS for length composition mimicked the results of the replicated ESS for each region; as the sexed sub-sampling level increased the ISS increased (Figures \@ref(fig:ai-iss) - \@ref(fig:goa-iss)).
+Results of the sex-specific ISS for length composition mimicked the results of the replicated ESS for each region; as the sexed sub-sampling level increased the ISS increased (Figs. \@ref(fig:ai-iss) - \@ref(fig:goa-iss)).
 It was usually the case that the magnitude of ISS was sensitive to the species and the survey year.
 In general, larger ISS were associated with species with larger sample sizes.
 While, for any given species, the effect of the survey year on the ISS is associated with the sample size for that year, it is also related to the structure of the length composition (i.e., uni- or multi-modal length compositions).
-Sex-specific ISS for length frequency ranged from around 50 to 1,200 for the Aleutian Islands bottom trawl survey (Figure \@ref(fig:ai-iss)), 500 to 3,000 for the eastern Bering Sea bottom trawl survey (Figure \@ref(fig:ebs-iss)), and 50 to 3,000 for the Gulf of Alaska bottom trawl survey (Figure \@ref(fig:goa-iss)).
+Sex-specific ISS for length frequency ranged from around 50 to 1,200 for the Aleutian Islands bottom trawl survey (Fig. \@ref(fig:ai-iss)), 500 to 3,000 for the eastern Bering Sea bottom trawl survey (Fig. \@ref(fig:ebs-iss)), and 50 to 3,000 for the Gulf of Alaska bottom trawl survey (Fig. \@ref(fig:goa-iss)).
 Similar to the results of the replicated ESS, the ISS for the total length composition remained stable across the sexed sub-sampling cases investigated.
 Total ISS for length were species-specific, with values around 50 to 500 for less frequently sampled species and 1,000 to 4,500 for more frequently sampled species in the Aleutian Islands, eastern Bering Sea, and Gulf of Alaska.
 
-Compared to the base ISS (the case using the full historical data set), the proportion of the base ISS for each sexed sub-sampling case was similar for females and males, but were different across species and survey years (Figures \@ref(fig:ai-iss-prop) - \@ref(fig:goa-iss-prop)).
+Compared to the base ISS (the case using the full historical data set), the proportion of the base ISS for each sexed sub-sampling case was similar for females and males, but they were different across species and survey years (Figs. \@ref(fig:ai-iss-prop) - \@ref(fig:goa-iss-prop)).
 The sex-specific proportion of base ISS increased as the sexed sub-sample size increased, and for the smallest sexed sub-sampling case the sex-specific ISS was less than 0.5 of the base ISS for some species.
 Again, the proportion of the base ISS for the total length composition was relatively unchanged across the sexed sub-sampling cases.
 For a number of species and survey years the sex-specific proportion for the sexed sub-sampling cases were similar to the base ISS, particularly for sexed sub-sampling sizes greater than 100.
 For these species, the proportion of the sexed sub-sample size of 100 was greater than 0.75 of the base ISS.
-The most notable exception was for eastern Bering Sea walleye pollock in each year of the survey, whose proportion of the base ISS for each of the sexed sub-sampling cases investigated ranged from 0.25 to 0.5 (Figure \@ref(fig:ebs-iss-prop)).
-The second most notable exception was for arrowtooth flounder in the Gulf of Alaska (Figure \@ref(fig:goa-iss-prop)).
+The most notable exception was for eastern Bering Sea walleye pollock in each year of the survey, whose proportion of the base ISS for each of the sexed sub-sampling cases investigated ranged from 0.25 to 0.5 (Fig. \@ref(fig:ebs-iss-prop)).
+The second most notable exception was for arrowtooth flounder in the Gulf of Alaska (Fig. \@ref(fig:goa-iss-prop)).
 Other species for which ISS for sexed sub-sample sizes greater than 100 were less than 0.75 of the base ISS included eastern Bering Sea Pacific cod in 2019, eastern Bering Sea and Aleutian Islands flathead sole in 2018, eastern Bering Sea arrowtooth flounder in 2018 and 2019, and Gulf of Alaska flathead sole in 2021.
 
 For some species the average amount of length frequency samples that would not have been subsequently sexed (for the sex sub-sampling cases of 100 - 175) ranged in the thousands of fish (Table \@ref(tab:avg-saved)).
@@ -314,7 +314,7 @@ For each region, across the species investigated here, the range of sex samples 
 
 # Discussion
 
-Two of the primary results from this analysis were: (1) with an increasing level of sub-sampling (i.e., fewer samples) of sex-specific length frequency the uncertainty in the resulting sex-specific length composition increases, and (2) the uncertainty in the total length composition (which is the result of the sum of the sex-specific length population estimates) is unaffected by sub-sampling of sex from the length frequency data.
+Two of the primary results from this analysis were 1) with an increasing level of sub-sampling (i.e., fewer samples) of sex-specific length frequency the uncertainty in the resulting sex-specific length composition increases, and 2) the uncertainty in the total length composition (which is the result of the sum of the sex-specific length population estimates) is unaffected by sub-sampling of sex from the length frequency data.
 Across the majority of stocks the resulting ISS for sex-specific length composition was reduced by less than 25% after decreasing the number of length frequency collections that are subsequently sexed to 100 - 175 fish when compared to the ISS that resulted from the full historical datasets without any sex sub-sampling.
 There were notable exceptions, however, primarily for walleye pollock in the eastern Bering Sea, for which the ISS for the sex sub-sampling cases was greatly reduced when compared to the base case.
 This reduction in the ISS can be explained by the large reduction in sexed sample sizes compared to the base case (nearly 15,000 less sexed samples on average for the sex sub-sample size case of 100).
@@ -324,7 +324,7 @@ Therefore, the ISS for the assessment model would remained unchanged regardless 
 This same single-sex modeling approach is used for the eastern Bering Sea Pacific cod stock assessment [@Thompson2021], so while the sex-specific ISS was reduced by a large amount compared to the base case in some years (e.g., 2019), the ISS for the total length composition was similar to the base case.
 
 Another notable exception to the ISS being reduced by less than 25% for sex sub-sampling cases of 100 - 175 fish, though not as extreme as eastern Bering Sea walleye pollock, was for some of the flatfish stocks in the eastern Bering Sea and Gulf of Alaska.
-All of the flatfish assessments performed by the AFSC are sex-specific [e.g., @Spies2021] due to clear sexual dimorphism in growth. Further, some of these flatfish assessments use the sex-specific length frequency samples in addition to the age specimen collections (which include information on sex, weight and age for individual fish) to estimate growth internally and fit age composition data in the assessment model through conditional age-at-length methods [e.g., @Turnock2017]. Additionally sex-specific, length-based selectivity is often estimated in these assessments to account for differences in availability to the survey. Therefore estimates of spawning stock biomass are highly dependent on understanding the trends in female length frequency. In addition, recent research has indicated that growth of certain flatfish stocks may be regionally-specific and thus spatially-explicit stock assessments have been developed to account for different growth rates in different regions [@Mcgilliard2017; @Bryan2021].
+All of the flatfish assessments performed by the AFSC are sex-specific [e.g., @Spies2021] due to clear sexual dimorphism in growth. Further, some of these flatfish assessments use the sex-specific length frequency samples in addition to the age specimen collections (which include information on sex, weight and age for individual fish) to estimate growth internally and fit age composition data in the assessment model through conditional age-at-length methods [e.g., @Mcgilliard2017]. Additionally sex-specific, length-based selectivity is often estimated in these assessments to account for differences in availability to the survey. Therefore estimates of spawning stock biomass are highly dependent on understanding the trends in female length frequency. In addition, recent research has indicated that growth of certain flatfish stocks may be regionally-specific and thus spatially-explicit stock assessments have been developed to account for different growth rates in different regions [@Mcgilliard2017; @Bryan2021].
 Thus, the reduction in the sex-specific ISS for length composition based on the sexed sub-sampling level may have a greater influence on the results of these assessments.
 The influence of sub-sampling for sex determination of length frequency data and how that relates to assessment output sensitivity to reduction in ISS, conditional age-at-length results, and spatially-explicit assessments remains unknown.
 We recommend that additional flatfish-specific analysis would be performed to determine the influence of sex sub-sampling and that caution would be used when reducing flatfish sex sampling on the AFSC bottom trawl surveys in some cases.
@@ -339,7 +339,7 @@ This joint recommendation will be applied starting with the 2022 eastern Bering 
 # Acknowledgments
 
 We thank representatives from the Groundfish Assessment Program (Duane Stevenson, Ned Leyman, and Stan Kotwicki), the Marine Ecology and Stock Assessment program, and the Status of Stocks and Multispecies Assessments program for their participation and collaboration in this work and providing recommendations to the AFSC bottom trawl surveys.
-We thank *reviewer1* and *reviewer2* for their helpful reviews of this manuscript.
+We thank Stan Kotwicki and Carey McGilliard for their helpful reviews of this manuscript.
 
 \newpage
 
